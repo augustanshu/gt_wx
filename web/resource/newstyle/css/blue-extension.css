@@ -1,0 +1,32 @@
+
+
+/* FONTS */
+/* Picto font & Icon */
+@import "../fonts/fontello/css/fontello.css";
+@import "../fonts/fontello/css/animation.css";
+@import "../fonts/awesome/css/font-awesome.css";
+
+/*@import "icon-fugue.min.css";*/
+
+
+@font-face {
+        font-family: 'ForteMT';
+        src: url('../fonts/forte/forte.eot');
+        src: url('../fonts/forte/forte.eot?#iefix') format('embedded-opentype'),
+             url('../fonts/forte/forte.woff') format('woff'),
+             url('../fonts/forte/forte.ttf') format('truetype'),
+             url('../fonts/forte/forte.svg#forte') format('svg');
+        font-weight: normal;
+        font-style: normal;
+}
+
+
+.codesOn .i-name {
+  display: none;
+}
+.codesOn .i-code {
+  display: inline;
+}
+.i-code {
+  display: none;
+}

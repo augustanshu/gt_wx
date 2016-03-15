@@ -1,0 +1,249 @@
+{template 'common/header-base'}
+<link rel="stylesheet" href="./themes/default/style/css/landing.css" type="text/css" cache="false" />
+<header id="header" class="navbar navbar-fixed-top bg-white box-shadow b-b b-light" data-spy="affix" data-offset-top="1">
+  <div class="container">
+      {php $logo = !empty($_W['setting']['copyright']['flogo'])?tomedia($_W['setting']['copyright']['flogo']):'./resource/images/flogo.png'}
+      <div class="navbar-header"> <a href="#" class="navbar-brand"><img src="{$logo}" ></a>
+      <button class="btn btn-link visible-xs" type="button" data-toggle="collapse" data-target=".navbar-collapse"> <i class="fa fa-bars"></i> </button>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        
+       <!-- 扩展菜单
+       	<li class="active"> <a href="./">首页</a> </li>
+       	<li> <a href="features.html">功能演示</a> </li>
+        <li> <a href="price.html">VIP购买</a> </li>
+       -->
+        <li>
+          <div class="m-t-sm"> <a href="{url 'user/login'}" class="btn btn-sm btn-success m-l"><strong>登陆</strong></a></div>
+   </li>
+        {if !empty($settings['register']['open'])}
+         <li>
+                  <div class="m-t-sm"><a href="{url 'user/register'}" class="btn btn-sm btn-default m-l">注册</a></div>
+        </li>
+        {/if}
+      </ul>
+    </div>
+  </div>
+</header>
+<!-- / header -->
+<section id="content">
+  <div class="bg-primary dk">
+    <div class="text-center wrapper">
+      <div class="m-t-xl m-b-xl">
+        <div class="text-uc h1 font-bold inline">
+          <div class="pull-left m-r-sm text-white"><span class="font-thin text-muted">{$_W['setting']['copyright']['sitename']}</span></div>
+          <div class="carousel slide carousel-fade inline auto aside text-left pull-left pull-none-xs" data-interval="2000">
+            <div class="carousel-inner">
+              <div class="item active text-warning">简单高效</div>
+              <div class="item text-dark"> 快速便捷</div>
+              <div class="item"> 制胜法宝 </div>
+            </div>
+          </div>
+        </div>
+        <div class="h4 text-muted m-t-sm">搭建属于您自己的微信营销管理平台</div>
+      </div>
+      <p class="text-center m-b-xl"> 
+          <a href="{url 'user/register'}"  class="btn btn-lg btn-dark m-sm">免费体验</a>
+          <a href="#" target="_blank" class="btn btn-lg btn-warning b-white bg-empty m-sm">立即购买</a> </p>
+    </div>
+    <div class="padder">
+      <div class="hbox">
+        <aside class="col-md-3 v-bottom text-right">
+          <div class="hidden-sm hidden-xs">
+            <section class="panel bg-dark inline m-b-n-lg m-r-n-lg aside-sm no-border device phone animated fadeInLeftBig">
+              <header class="panel-heading text-center"> <i class="fa fa-minus fa-2x m-b-n-xs block"></i> </header>
+              <div>
+                <div class="m-l-xs m-r-xs"> <img src="./themes/default/style/images/phone-2.png" class="img-full" > </div>
+              </div>
+            </section>
+          </div>
+        </aside>
+        <aside class="col-sm-10 col-md-6">
+          <section class="panel bg-dark m-b-n-lg no-border device animated fadeInUp">
+            <header class="panel-heading text-left"> <i class="fa fa-circle fa-fw"></i> <i class="fa fa-circle fa-fw"></i> <i class="fa fa-circle fa-fw"></i> </header>
+            <img src="./themes/default/style/images/main.png" class="img-full" > </section>
+        </aside>
+        <aside class="col-md-3 v-bottom">
+          <div class="hidden-sm hidden-xs">
+            <section class="panel bg-light m-b-n-lg m-l-n-lg aside no-border device phone animated fadeInRightBig">
+              <header class="panel-heading text-center"> <i class="fa fa-minus fa-2x text-white m-b-n-xs block"></i> </header>
+              <div class="">
+                <div class="m-l-xs m-r-xs"> <img src="./themes/default/style/images/phone-1.png" class="img-full" > </div>
+              </div>
+            </section>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <div class="dker pos-rlt">
+      <div class="container wrapper">
+        <div class="m-t-lg m-b-lg text-center"> 让您的微信营销距离客户更近一步 </div>
+      </div>
+    </div>
+  </div>
+  <div id="about">
+    <div class="container">
+      <div class="m-t-xl m-b-xl text-center wrapper">
+        <h3>如何在微信营销竞争中脱颖而出？</h3>
+        <p class="text-muted">微盒子助你一臂之力.</p>
+      </div>
+      <div class="row m-t-xl m-b-xl text-center">
+        <div class="col-sm-4" data-ride="animated" data-animation="fadeInLeft" data-delay="300">
+          <p class="h3 m-b-lg"> <i class="fa fa-lightbulb-o fa-3x text-info"></i> </p>
+          <div class="">
+            <h4 class="m-t-none">功能模块化</h4>
+            <p class="text-muted m-t-lg">功能模块化让您的平台与众不同，功能增加删除随心所欲。功能独立，安全百分百。</p>
+          </div>
+        </div>
+        <div class="col-sm-4" data-ride="animated" data-animation="fadeInLeft" data-delay="600">
+          <p class="h3 m-b-lg"> <i class="fa fa-signal fa-3x text-info"></i> </p>
+          <div class="">
+            <h4 class="m-t-none">多用户分级管理</h4>
+            <p class="text-muted m-t-lg">根据客户的不同开启不同的功能，微盒子可实现可实现不同用户不同权限的分级管理。</p>
+          </div>
+        </div>
+        <div class="col-sm-4" data-ride="animated" data-animation="fadeInLeft" data-delay="900">
+          <p class="h3 m-b-lg"> <i class="fa fa-rocket fa-3x text-info"></i> </p>
+          <div class="">
+            <h4 class="m-t-none">在线商城</h4>
+            <p class="text-muted m-t-lg">在线商城为您提供众多功能模块，想用什么买什么，无需多花冤枉钱。</p>
+          </div>
+        </div>
+      </div>
+      <div class="m-t-xl m-b-xl text-center wrapper">
+        <p class="h5">微盒子为您带来 <span class="text-primary">微商城</span>, <span class="text-primary">微团购</span>, <span class="text-primary">微餐饮等等众多惊喜</span>... </p>
+      </div>
+    </div>
+  </div>
+  <div id="responsive" class="bg-dark">
+    <div class="text-center">
+      <div class="container">
+        <div class="m-t-xl m-b-xl wrapper">
+          <h3 class="text-white">支持第三方开发者，胜人一步。</h3>
+          <p>功能没有实现？需要增加功能？私人定制？ <br>
+            微盒子支持第三方开发者机制，个性化成就您的所有需求。</p>
+        </div>
+        <div class="row m-t-xl m-b-xl">
+          <div class="col-sm-4 wrapper-xl" data-ride="animated" data-animation="fadeInLeft" data-delay="300">
+            <p class="text-center h2 m-b-lg m-t-lg"> <span class="fa-stack fa-2x"> <i class="fa fa-circle fa-stack-2x text-dark"></i> <i class="fa fa-mobile fa-stack-1x text-muted"></i> </span> </p>
+            <p>功能修改</p>
+          </div>
+          <div class="col-sm-4 wrapper-xl" data-ride="animated" data-animation="fadeInLeft" data-delay="600">
+            <p class="text-center h1 m-b-lg"> <span class="fa-stack fa-2x"> <i class="fa fa-circle fa-stack-2x text-dark"></i> <i class="fa fa-tablet fa-stack-1x text-muted"></i> </span> </p>
+            <p>定制开发</p>
+          </div>
+          <div class="col-sm-4 wrapper-xl" data-ride="animated" data-animation="fadeInLeft" data-delay="900">
+            <p class="text-center h2 m-b-lg m-t-lg"> <span class="fa-stack fa-2x"> <i class="fa fa-circle fa-stack-2x text-dark"></i> <i class="fa fa-desktop fa-stack-1x text-muted text-md"></i> </span> </p>
+            <p>在线商城</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div id="newsletter" class="bg-white clearfix wrapper-lg">
+    <div class="container text-center m-t-xl m-b-xl" data-ride="animated" data-animation="fadeIn">
+      <h2>功能订阅</h2>
+      <p>留下您的邮件，我们会及时给您邮寄最新的功能升级说明</p>
+      <form class="form-inline m-t-xl m-b-xl">
+        <div class="form-group">
+          <input class="form-control input-lg" placeholder="您的邮箱地址" data-ride="animated" data-animation="fadeInLeftBig" data-delay="300">
+        </div>
+        <button type="submit" class="btn btn-default btn-lg" data-ride="animated" data-animation="fadeInRightBig" data-delay="600">我要订阅</button>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- footer -->
+<footer id="footer">
+  <div class="bg-primary text-center">
+    <div class="container wrapper">
+      <div class="m-t-xl m-b"> 微盒子给你全新的微信营销体验. <a href="" target="_blank" class="btn btn-lg btn-dark b-white bg-empty m-sm">免费试用</a> <a href="index.html" target="_blank" class="btn btn-lg btn-warning b-white bg-empty m-sm">立即购买</a> </div>
+    </div>
+    <i class="fa fa-caret-down fa-4x text-primary m-b-n-lg block"></i> </div>
+  <div class="bg-dark dker wrapper">
+    <div class="container text-center m-t-lg">
+      <div class="row m-t-xl m-b-xl">
+        <div class="col-sm-4" data-ride="animated" data-animation="fadeInLeft" data-delay="300"> <i class="fa fa-map-marker fa-3x icon-muted"></i>
+          <h5 class="text-uc m-b m-t-lg">我们是谁</h5>
+          <p class="text-sm">{$copyright['company']} <br/>
+           地址：{$copyright['address']}</p>
+        </div>
+        <div class="col-sm-4" data-ride="animated" data-animation="fadeInUp" data-delay="600"> <i class="fa fa-envelope-o fa-3x icon-muted"></i>
+          <h5 class="text-uc m-b m-t-lg">联系方式</h5>
+          <p>
+              联系人：{$copyright['person']} / 手机：{$copyright['phone']} <br/>
+              QQ：{$copyright['qq']}  / 邮箱：{$copyright['email']} <br/>
+             
+          </p>
+        </div>
+        <div class="col-sm-4" data-ride="animated" data-animation="fadeInRight" data-delay="900"> <i class="fa fa-globe fa-3x icon-muted"></i>
+       
+          <p class="text-sm">
+          	<div class="map col-lg-5 col-md-6 col-sm-12 col-xs-12" style="height:150px;">
+	<div class="img" style="width:313px; height:150px; border:#ccc solid 1px;" id="baidumap"></div>
+					</div>
+          </p>
+        </div>
+      </div>
+      <div class="m-t-xl m-b-xl">
+        <p> <a href="#content" data-jump="true" class="btn btn-icon btn-rounded btn-dark b-dark bg-empty m-sm text-muted"><i class="fa fa-angle-up"></i></a> </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="./themes/default/style/js/app.v2.js" cache="false"></script> 
+<script src="./themes/default/style/js/appear/jquery.appear.js" cache="false"></script> 
+<script src="./themes/default/style/js/scroll/smoothscroll.js" cache="false"></script> 
+<script src="./themes/default/style/js/landing.js" cache="false"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<script language='javascript'>
+    $(function(){
+      $("html").removeClass('app');     
+    });
+ 
+	require(['jquery'],function($){
+		var bmap = {
+			'option' : {
+				'lock' : false,
+				'container' : 'baidumap',
+				'infoWindow' : {'width' : 250, 'height' : 100, 'title' : ''},
+				'point' : {'lng' : {$copyright['baidumap']['lng']}, 'lat' : {$copyright['baidumap']['lat']}}
+			},
+			'init' : function(option) {
+				var $this = this;
+				$this.option = $.extend({},$this.option,option);
+				$this.option.defaultPoint = new BMap.Point($this.option.point.lng, $this.option.point.lat);
+				$this.bgeo = new BMap.Geocoder();
+				$this.bmap = new BMap.Map($this.option.container);
+				$this.bmap.centerAndZoom($this.option.defaultPoint, 15);
+				$this.bmap.enableScrollWheelZoom();
+				$this.bmap.enableDragging();
+				$this.bmap.enableContinuousZoom();
+				$this.bmap.addControl(new BMap.NavigationControl());
+				$this.bmap.addControl(new BMap.OverviewMapControl());
+				//添加标注
+				$this.marker = new BMap.Marker($this.option.defaultPoint);
+				$this.marker.enableDragging();
+				$this.bmap.addOverlay($this.marker);
+				$this.marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+			},
+			'setMarkerCenter' : function() {
+				var $this = this;
+				var center = $this.bmap.getCenter();
+				$this.marker.setPosition(new BMap.Point(center.lng, center.lat));
+				$this.showPointValue();
+				$this.showAddress();
+			}
+		};
+		$(function(){
+			var option = {};
+			option = {'point' : {'lng' : '{$copyright['baidumap']['lng']}', 'lat' : '{$copyright['baidumap']['lat']}'}}
+			bmap.init(option);
+		});
+	});
+</script>
+ 
+</body>
+</html>

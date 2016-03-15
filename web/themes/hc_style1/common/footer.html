@@ -1,0 +1,27 @@
+ 
+        </section>
+      </section>
+      <aside class="bg-light lter b-l aside-md hide" id="notes">
+        <div class="wrapper">Notification</div>
+      </aside>
+    </section>
+  </section>
+</section>
+ 
+	<script>
+		function subscribe(){
+			$.post("{url 'utility/subscribe'}", function(){
+				setTimeout(subscribe, 5000);
+			});
+		}
+		function sync() {
+			$.post("{url 'utility/sync'}", function(){
+				setTimeout(sync, 60000);
+			});
+		}
+		$(function(){
+			subscribe();
+			sync();
+		});
+	</script>
+{template 'common/footer-base'}
