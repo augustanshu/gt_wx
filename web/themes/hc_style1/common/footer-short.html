@@ -1,12 +1,15 @@
-  <div class="center-block footer">
+
+
+</body>
+
+        </section>
+		    <footer class="center-block" style="min-height:50px">
 		<div class="text-center">
 			{if empty($_W['setting']['copyright']['footerright'])}
-			Powered by 宁波港通天下网络科技有限公司</a> © 2015-2016 
+			Powered by 宁波港通天下网络科技有限公司</a> ©2015-2016 
 			{else}{$_W['setting']['copyright']['footerright']}{/if} &nbsp; &nbsp; {if !empty($_W['setting']['copyright']['statcode'])}{$_W['setting']['copyright']['statcode']}{/if}
 		</div>
-	</div>
-</body>
-        </section>
+	</footer>
       </section>
 	  <!--
       <aside class="bg-light lter b-l aside-md hide" id="notes">
@@ -14,9 +17,10 @@
       </aside>
 	  -->
     </section>
-  </section>
-</section>
 
+  </section>
+  
+</section>
 	<script>
 		function subscribe(){
 			$.post("{url 'utility/subscribe'}", function(){

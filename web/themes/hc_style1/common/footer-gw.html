@@ -30,13 +30,13 @@
 			});
 			{/if}
 		</script>
-		<div class="center-block footer" role="footer">
-
-			<div class="text-center" style="margin-top:15em">
+      <div class="center-block footer" style="margin-top:200px">
+		<div class="text-center">
+			{if empty($_W['setting']['copyright']['footerright'])}
 			Powered by 宁波港通天下网络科技有限公司</a> © 2015-2016 
-				{if empty($_W['setting']['copyright']['footerleft'])}{else}{$_W['setting']['copyright']['footerleft']}{/if}
-			</div>
+			{else}{$_W['setting']['copyright']['footerright']}{/if} &nbsp; &nbsp; {if !empty($_W['setting']['copyright']['statcode'])}{$_W['setting']['copyright']['statcode']}{/if}
 		</div>
+	</div>
 	</div>
 </body>
 </html>
