@@ -1,0 +1,49 @@
+<?php
+
+//微讯 by QQ:6841611 http://www.weixin023.com/
+if (!defined('IN_IA')) {
+	die('Access Denied');
+}
+class Ewei_DShop_Plugin
+{
+	public function getSet($plugin = '', $key = '', $uniacid = 0)
+	{
+		global $_W, $_GPC;
+		if (empty($uniacid)) {
+			$uniacid = $_W['uniacid'];
+		}
+		$set = pdo_fetch("select * from " . tablename('ewei_shop_sysset') . ' where uniacid=:uniacid limit 1', array(':uniacid' => $uniacid));
+		if (empty($set)) {
+			return array();
+		}
+		$allset = unserialize($set['sets']);
+		if (empty($key)) {
+			return $allset;
+		}
+		return $allset[$key];
+	}
+	public function exists($pluginName = '')
+	{
+		$dbplugin = pdo_fetchall('select * from ' . tablename('ewei_shop_plugin') . ' where identity=:identyty limit  1', array(':identity' => $pluginName));
+		if (empty($dbplugin)) {
+			return false;
+		}
+		return true;
+	}
+	public function getAll()
+	{
+		global $_W;
+		$path = IA_ROOT . "/addons/ewei_shop/data/perm";
+		if (!is_dir($path)) {
+			load()->func('file');
+			@mkdirs($path);
+		}
+		$cachefile = $path . "/plugins";
+		$plugins = iunserializer(@file_get_contents($cachefile));
+		if (!is_array($plugins)) {
+			$plugins = pdo_fetchall('select * from ' . tablename('ewei_shop_plugin') . ' order by displayorder asc');
+			file_put_contents($cachefile, iserializer($plugins));
+		}
+		return $plugins;
+	}
+}
