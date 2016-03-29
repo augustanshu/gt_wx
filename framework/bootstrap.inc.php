@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2015-2016 Port-of-World.
- *  2016-03-03 
+ * _W _GPC等的配置
  */
 define('IN_IA', true);
 define('STARTTIME', microtime());

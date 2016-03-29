@@ -1,7 +1,10 @@
 <?php
 /**
- * [WeEngine System] Copyright (c) 2014 WE7.CC
- * WeEngine is NOT a free software, it under the license terms, visited http://www.we7.cc/ for more details.
+ *  Copyright © Port-of-World.
+ * 初始化当前公众号的数据
+ * 解析公众平台推送过来的数据结构，转化为微擎消息结构
+ * 根据消息结构中的关键字或是事件匹配到相应的模块
+ * 调用模块的processor类返回数据给微信公共平台
  */
 define('IN_API', true);
 require_once './framework/bootstrap.inc.php';

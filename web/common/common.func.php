@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright ? 2015-2016 Port-of-World.
+ * Copyright © 2015-2016 Port-of-World
  *  2016-03-08
  */
 defined('IN_IA') or exit('Access Denied');

@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2015-2016 Port-of-World.
- *  2016-03-03 
+ *  web入口
  */
 define('IN_SYS', true);
 require '../framework/bootstrap.inc.php';
@@ -128,14 +128,12 @@ if(!empty($handle)) {
 	}
 }
 if(!in_array($controller, $controllers)) {
-	$controller = 'account';
+	$controller = 'account';///
 }
 $init = IA_ROOT . "/web/source/{$controller}/__init.php";
 if(is_file($init)) {
 	require $init;
 }
-
-//echo($controller);
 
 $actions = array();
 $handle = opendir(IA_ROOT . '/web/source/' . $controller);
@@ -152,7 +150,7 @@ if(empty($actions)) {
 	header('location: ?refresh');
 }
 if(!in_array($action, $actions)) {
-	$action = $acl[$controller]['default'];
+	$action = $acl[$controller]['default'];///////
 }
 if(!in_array($action, $actions)) {
 	$action = $actions[0];
@@ -199,8 +197,10 @@ if(!defined('IN_GW')) {
 		message('您的账号没有访问此公众号的权限.');
 	}
 }
+//转到页面
 require _forward($controller, $action);
 
+//其他操作
 define('ENDTIME', microtime());
 if (empty($_W['config']['setting']['maxtimeurl'])) {
 	$_W['config']['setting']['maxtimeurl'] = 10;
