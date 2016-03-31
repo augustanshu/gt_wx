@@ -200,7 +200,7 @@ define(['jquery', 'core'], function($, core) {
             }
 
         },confirm:function(msg,callback){
-            
+           /*
             var html = '<div id="core_alert"><div class="layer"></div><div class="tips"><div class="title">';
             html+=msg;
             html+='</div><div class="sub"><nav data-action="cancel">取消</nav><nav data-action="ok">确定</nav>';
@@ -212,6 +212,28 @@ define(['jquery', 'core'], function($, core) {
            $(document.body).append(div);
             $('.layer',div).fadeIn(100);$('.tips',div).fadeIn(100);
             div.find('nav').unbind('click').click(function(){
+                
+                var action=$(this).data('action');
+                if(action=='ok'){
+                    if(callback){
+                        callback();
+                    }
+                }
+                div.remove();
+            });
+           */
+		   
+		    var html = '<div class="weui_dialog_confirm"><div class="weui_mask"></div> <div class="weui_dialog"><div class="weui_dialog_hd"><strong class="weui_dialog_title">提示</strong></div> <div class="weui_dialog_bd">';
+            html+=msg;
+            html+='</div> <div class="weui_dialog_ft"><a href="#" class="weui_btn_dialog default" data-action="cancel">取消</a><a href="#" class="weui_btn_dialog primary" data-action="ok">确定</a>';
+            html+='</div></div></div>';
+            if($('#core_tip').length>0){
+                $('#core_tip').remove();
+            }
+            var div =$(html);
+           $(document.body).append(div);
+            $('.weui_mask',div).fadeIn(100);$('.weui_dialog',div).fadeIn(100);
+            div.find('a').unbind('click').click(function(){
                 
                 var action=$(this).data('action');
                 if(action=='ok'){
