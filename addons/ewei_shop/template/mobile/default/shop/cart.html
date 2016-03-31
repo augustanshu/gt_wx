@@ -1,4 +1,4 @@
-{template 'common/header'}
+{template 'common/header'} 
 <title>我的购物车</title>
 <style type="text/css">
 body {margin:0px; background:#f8f8f8;width:100%;}
@@ -11,9 +11,9 @@ body {margin:0px; background:#f8f8f8;width:100%;}
 .cart_main { height:auto; }
 .cart_good {height:80px;  padding:10px 0px; border-bottom:1px solid #e3e3e3;}
 
-.cart_good .ico {height:20px; width:30px; text-align: center; margin-top:25px; float:left;font-size:24px;z-index:2;position: relative;}
+.cart_good .ico {height:20px; width:30px; text-align: center; margin-top:25px; float:left;font-size:24px;z-index:1;position: relative;}
 
-.cart_good .img {height:80px; width:80px; background:#dedede; float:left;z-index:88;z-index:2;position: relative;}
+.cart_good .img {height:80px; width:80px; background:#dedede; float:left;z-index:88;z-index:1;position: relative;}
 .cart_good .img img {height:100%; width:100%}
 
 .cart_good .info {height:80px; width:100%; float:left;margin-left: -110px;margin-right:-100px;position: relative;}
@@ -23,7 +23,7 @@ body {margin:0px; background:#f8f8f8;width:100%;}
 .cart_good .info .inner .optionsel .content { float:left;width:100%;overflow:hidden;height:30px;}
 .cart_good .info .inner .optionsel .content .cinner { margin-right: 20px;}
 .cart_good .info .inner .optionsel .cico { float:right;width:20px;text-align:center;margin-left:-20px;height:30px;line-height: 30px;}
-.cart_good .other {position:relative;height:80px; width:80px; ;float:right;margin-left:-100px;margin-right: 10px;z-index:2;position: relative;}
+.cart_good .other {position:relative;height:80px; width:80px; ;float:right;margin-left:-100px;margin-right: 10px;z-index:1;position: relative;}
 .cart_good .other .price,.cart_good .other .price1 { width:100%;height:20px;text-align:right;color:#666;font-size:14px; }
 .cart_good .other .price1 { text-decoration:line-through;color:#999;}
 .cart_good .other .num {height:28px; width:80px; border:1px solid #e2e2e2; margin-top:5px;}
@@ -45,8 +45,8 @@ body {margin:0px; background:#f8f8f8;width:100%;}
 .cart_top .disabled { color:#ccc;}
  
 
-.card_no {height:100px;  margin:50px 0px 60px; color:#ccc; font-size:12px; text-align:center;}
-.card_no_menu {height:40px; width:100%;}
+.card_no {height:100px;  margin:100px 0px 60px; color:#ccc; font-size:12px; text-align:center;}
+.card_no_menu {height:40px; width:50%;margin:auto auto}
 .card_no_nav {height:38px; width:43%; background:#eee; margin:0px 3%; float:left; border:1px solid #d4d4d4; border-radius:5px; text-align:center; line-height:38px; color:#666;}
 
 
@@ -88,11 +88,13 @@ body {margin:0px; background:#f8f8f8;width:100%;}
  <script id='cart_empty' type='text/html'>
      <div class="cart_top">
     <div class="title" onclick='history.back()'><i class='fa fa-chevron-left'></i> 购物车(0)</div>
+	
 </div>
- <div class="card_no"><i class="fa fa-shopping-cart" style="font-size:100px;"></i><br><span style="line-height:18px; font-size:16px;">购物车快饿瘪了</span><br>主人快去给我找点东西吧</div>
+ <div class="card_no"><i class="fa fa-shopping-cart" style="font-size:100px;"></i><br><span style="line-height:18px; font-size:16px;">购物车快饿瘪了</span><br>主人快去给我找点宝贝吧</div>
 <div class="card_no_menu">
-   	<div class="card_no_nav" onclick="location.href='{php echo $this->createMobileUrl('member')}'">个人中心</div>
-        <div class="card_no_nav"  onclick="location.href='{php echo $this->getUrl()}'">去逛逛</div>
+   	<!--<div class="card_no_nav" onclick="location.href='{php echo $this->createMobileUrl('member')}'">个人中心</div>-->
+        <!--<div class="card_no_nav text-center"  onclick="location.href='{php echo $this->getUrl()}'">去逛逛</div>-->
+		<a href="javascript:void(0)" onclick="location.href='{php echo $this->getUrl()}'" class="weui_btn weui_btn_primary">去逛逛</a>
  </div>
 
 
@@ -113,7 +115,7 @@ body {margin:0px; background:#f8f8f8;width:100%;}
                         sel='1' 
                         data-maxbuy='<%value.maxbuy%>' 
                         data-stock='<%value.stock%>'>
-                 <div class="ico"><i class="fa fa-check-circle-o" style="color:#0C9;"></i></div>
+                 <div class="ico"><i class="fa fa-check-circle-o" style="color:#e43a3d;"></i></div>
                  <div class="img" onclick="location.href='{php echo $this->createMobileUrl('shop/detail')}&id=<%value.goodsid%>'"><img src="<%value.thumb%>"/></div>
                  <div class="info">
                      <div class='inner' >
@@ -141,7 +143,7 @@ body {margin:0px; background:#f8f8f8;width:100%;}
         <div class="cart_count">共 <span class='total'><%total%></span> 件商品 合计: ￥<span class='totalprice'><%totalprice%></span></div>
     </div>
     <div class="cart_pay">
-        <div class="all" sel="1"><i class="fa fa-check-circle-o" style="color:#0C9;"></i> <span class='t'>全选</span></div>
+        <div class="all" sel="1"><i class="fa fa-check-circle-o" style="color:#e43a3d;"></i> <span class='t'>全选</span></div>
         <div class="paysub <%if total<=0%>disabled<%/if%>">结算(<span class='total'><%total%></span>)</div>
         <div class="text">合计：<span>￥<span  class='totalprice'><%totalprice%></span></span><br><span style="color:#999; font-size:14px;">不含运费</span></div>
     </div>
@@ -168,7 +170,7 @@ body {margin:0px; background:#f8f8f8;width:100%;}
                          obj.find('i').addClass('fa-circle-o').removeClass('fa-check-circle-o').css('color', '#999');
                     }
                     else{
-                         obj.find('i').removeClass('fa-circle-o').addClass('fa-check-circle-o').css('color', '#0c9');
+                         obj.find('i').removeClass('fa-circle-o').addClass('fa-check-circle-o').css('color', '#e43a3d');
                     }
                     sel =sel==1?0:1;
                     if(!isall){
