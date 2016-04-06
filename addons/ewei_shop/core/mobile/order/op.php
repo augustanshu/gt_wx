@@ -108,13 +108,20 @@ if ($_W['isajax']) {
 					if ($_W['ispost']) {
 						$member = m('member')->getInfo($openid);
 						$comments = $_GPC['comments'];
+						$nickname=$member['nickname'];
+						$length=mb_strlen($nickname,'utf8');
+                        $_name=$length>2?mb_substr($nickname,0,1,'utf8').'***'.mb_substr($nickname,$length-1,1,'utf8'):mb_substr($nickname,0,1,'utf8').'***';
+						//$_length=strlen($nickname);
+						//$_name=$_length>2?substr($nickname,0,1).'***'.substr($nickname,$_length-1,1): substr($nickname,0,1).'***'; 
+						$_headimg='images/global/noavatar_middle.gif';
+						
 						if (!is_array($comments)) {
 							show_json(0, '数据出错，请重试!');
 						}
 						foreach ($comments as $c) {
 							$old_c = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_order_comment') . ' where uniacid=:uniacid and orderid=:orderid and goodsid=:goodsid limit 1', array(':uniacid' => $_W['uniacid'], ':goodsid' => $c['goodsid'], ':orderid' => $orderid));
 							if (empty($old_c)) {
-								$comment = array('uniacid' => $uniacid, 'orderid' => $orderid, 'goodsid' => $c['goodsid'], 'level' => $c['level'], 'content' => $c['content'], 'images' => is_array($c['images']) ? iserializer($c['images']) : iserializer(array()), 'openid' => $openid, 'nickname' => $member['nickname'], 'headimgurl' => $member['avatar'], 'createtime' => time());
+								$comment = array('uniacid' => $uniacid, 'orderid' => $orderid, 'goodsid' => $c['goodsid'], 'level' => $c['level'], 'content' => $c['content'], 'images' => is_array($c['images']) ? iserializer($c['images']) : iserializer(array()), 'openid' => $openid, 'nickname' => $_name, 'headimgurl' => $_headimg, 'createtime' => time());
 								pdo_insert('ewei_shop_order_comment', $comment);
 							} else {
 								$comment = array('append_content' => $c['content'], 'append_images' => is_array($c['images']) ? iserializer($c['images']) : iserializer(array()));
