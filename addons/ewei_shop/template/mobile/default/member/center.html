@@ -3,7 +3,7 @@
 <style type="text/css">
     body {margin:0px; background:#eee; -moz-appearance:none;}
     a {text-decoration:none;}
-    .header {height: auto; width:100%; padding:0px; background: url(../addons/ewei_shop/template/mobile/default/static/images/bg2.png) 0 0 no-repeat;background-size: 100% 100%;}
+    .header {height: auto; width:100%; padding:10px 0 0 0; background: url(../addons/ewei_shop/template/mobile/default/static/images/bg2.png) 0 0 no-repeat;background-size: 100% 100%;}
     .header .user {height:48px; padding:10px;}
     .header .user .user-head {height:48px; width:48px; background:#fff; border-radius:50%; float:left;border:2px solid #fff;}
     .header .user .user-head img {height:48px; width:48px; border-radius:24px;}
@@ -21,8 +21,8 @@
     .take {height:30px; width:auto; padding:0 10px; line-height:30px; font-size:16px; float:right; background:#ff6600; border-radius:5px; margin-top:5px; color:#fff;}
     .take1 {height:30px; width:auto; padding:0 10px; line-height:30px; font-size:16px; float:right; background:#00cc00; border-radius:5px; margin-top:5px; color:#fff;}
     
-    .order {height:135px; width:100%; background:#fff; margin-top:20px; border-bottom:1px solid #ddd;}
-    .order_all {height:100px; width:100%; padding:16px 0px; color:#666;}
+    .order {height:125px; width:100%; background:#fff; margin-top:10px; border-bottom:1px solid #ddd;}
+    .order_all {height:100px; width:100%; padding:10px 0px; color:#666;}
     .order_pub {height:18px; float:left; border-left:1px solid #eee; padding-top:5px; text-align:center; color:#666; position:relative;}
     .order_pub span {height:16px; width:16px; background:#f30; border-radius:8px; position:absolute; top:0; right:25%; font-size:12px; color:#fff; line-height:16px;}
     .order_1 {width:24%;}
@@ -32,13 +32,13 @@
 
     .list1 {height:44px; width:94%; background:#fff; padding:0px 3%; margin-top:20px; border-bottom:1px solid #ddd; border-top:1px solid #ddd; line-height:44px; color:#666;}
     .list1 i {font-size:20px; margin-right:10px;}
-    .allorder {float:right; color:#aaa; margin-right:45px; text-decoration:none;}
+    .allorder {float:right; color:#aaa; margin-right:10px; text-decoration:center;   font-size: 12px; line-height:44px}
 
 
     .cart {height:auto; width:100%; background:#fff; margin-top:20px; border-bottom:1px solid #ddd;}
     .address {height:38px; width:100%; background:#fff; margin-top:20px; border-bottom:1px solid #ddd; border-top:1px solid #ddd; line-height:38px;}
 
-    .copyright {height:40px; width:100%; text-align:center; line-height:40px; font-size:12px; color:#999; margin-top:10px;}
+    .copyright {height:40px; width:100%; text-align:center; line-height:40px; font-size:12px; color:#aaa; margin-top:10px;}
 
 </style>
 
@@ -69,15 +69,15 @@
         <div class="list1" style="margin-top:0px;">
             <i class="fa fa-reorder" style="float:left; line-height:44px;"></i>
             <span style="float:left;">我的订单</span>
-            <i class="fa fa-angle-right" style="color:#999; font-size:26px; float:right; line-height:44px;"></i>
+            <i class="fa fa-angle-right" style="color:#aaa; font-size:20px; float:right; line-height:42px;"></i>
             <div class="allorder">查看我的全部订单</div>
         </div>
     </a>
     <div class="order_all">
-        <a href="{php echo $this->createMobileUrl('order',array('status'=>0))}"><div class="order_pub order_1" style="border:0px;"><i class="fa fa-credit-card" style="font-size:30px"></i><br>待付款<%if order.status0>0%><span><%order.status0%></span><%/if%></div></a>
-        <a href="{php echo $this->createMobileUrl('order',array('status'=>1))}"><div class="order_pub order_2"><i class="fa fa-suitcase" style="font-size:30px"></i><br>待发货<%if order.status1>0%><span><%order.status1%></span><%/if%></div></a>
-        <a href="{php echo $this->createMobileUrl('order',array('status'=>2))}"><div class="order_pub order_3"><i class="fa fa-truck" style="font-size:30px"></i><br>待收货<%if order.status2>0%><span><%order.status2%></span><%/if%></div></a>
-        <a href="{php echo $this->createMobileUrl('order',array('status'=>4))}"><div class="order_pub order_4"><i class="fa fa-money" style="font-size:30px"></i><br>待退款<%if order.status4>0%><span><%order.status4%></span><%/if%></div></a>
+        <a href="{php echo $this->createMobileUrl('order',array('status'=>0))}"><div class="order_pub order_1" style="border:0px;"><i class="fa fa-credit-card" style="font-size:20px"></i><br>待付款<%if order.status0>0%><span><%order.status0%></span><%/if%></div></a>
+        <a href="{php echo $this->createMobileUrl('order',array('status'=>1))}"><div class="order_pub order_2"><i class="fa fa-suitcase" style="font-size:20px"></i><br>待发货<%if order.status1>0%><span><%order.status1%></span><%/if%></div></a>
+        <a href="{php echo $this->createMobileUrl('order',array('status'=>2))}"><div class="order_pub order_3"><i class="fa fa-truck" style="font-size:20px"></i><br>待收货<%if order.status2>0%><span><%order.status2%></span><%/if%></div></a>
+        <a href="{php echo $this->createMobileUrl('order',array('status'=>4))}"><div class="order_pub order_4"><i class="fa fa-exchange" style="font-size:20px"></i><br>待退款<%if order.status4>0%><span><%order.status4%></span><%/if%></div></a>
     </div>
 </div>
 

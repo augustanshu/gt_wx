@@ -85,12 +85,13 @@ class Core extends WeModuleSite
 				if ($_GPC['method'] == '') {
 					$this->footer['first']['text'] = $set['texts']['myshop'];
 				}
-				$this->footer['commission'] = array('text' => $set['texts']['center'], 'ico' => 'sitemap', 'url' => $this->createPluginMobileUrl('commission'));
+				$this->footer['commission'] = array('text' => $set['texts']['center'], 'ico' => 'user-plus', 'url' => $this->createPluginMobileUrl('commission'));
 			} else {
 				if (!$isagent) {
-					$this->footer['commission'] = array('text' => $set['texts']['become'], 'ico' => 'sitemap', 'url' => $this->createPluginMobileUrl('commission/register'));
+					$this->footer['commission'] = array('text' => $set['texts']['become'], 'ico' => 'user-plus', 'url' => $this->createPluginMobileUrl('commission/register'));
 				} else {
-					$this->footer['commission'] = array('text' => $set['texts']['shop'], 'ico' => 'heart', 'url' => $this->createPluginMobileUrl('commission/myshop', array('mid' => $member['mid'])));
+					$this->footer['commission'] = array('text' => $set['texts']['become'], 'ico' => 'user-plus', 'url' => $this->createPluginMobileUrl('commission/register'));
+					//$this->footer['commission'] = array('text' => $set['texts']['shop'], 'ico' => 'heart', 'url' => $this->createPluginMobileUrl('commission/myshop', array('mid' => $member['mid'])));
 				}
 			}
 		}

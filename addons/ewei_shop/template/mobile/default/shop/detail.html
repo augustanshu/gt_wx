@@ -180,7 +180,9 @@ div.flicking_con a.on{background-position:0 -9px}
         <%if commission%>
         <div class="info1">
             <div class="name"><%goods.title%></div>
+			
             <div class="sub1" onclick="location.href='{php echo $this->createPluginMobileUrl('commission/shares',array('goodsid'=>$_GPC['id']))}'"><i class="fa fa-cny"></i><%commission_text%></div>
+			
         </div>
         <%else%>
         <div class="info2"><%goods.title%></div>
