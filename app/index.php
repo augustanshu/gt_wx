@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2015-2016 Port-of-World.
+ * Copyright © 2015-2016 Port-of-World. 微信端入口
  */
 define('IN_MOBILE', true);
 require '../framework/bootstrap.inc.php';

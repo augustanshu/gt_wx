@@ -26,7 +26,7 @@ if (p('commission')) {
 			$shop = set_medias(p('commission')->getShop($mid), 'logo');
 			$shop['url'] = $this->createPluginMobileUrl('commission/myshop', array('mid' => $mid));
 		}
-		$commission_text = empty($cset['buttontext']) ? '我要分销' : $cset['buttontext'];
+		//$commission_text = empty($cset['buttontext']) ? '我要分销' : $cset['buttontext'];
 	}
 }
 $mid = intval($_GPC['mid']);
