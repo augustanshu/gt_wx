@@ -1,13 +1,17 @@
 <?php
 /**
- * [WeEngine System] Copyright (c) 2014 WE7.CC
- * WeEngine is NOT a free software, it under the license terms, visited http://www.we7.cc/ for more details.
+ * 缓存操作函数
+ * 
  */
 defined('IN_IA') or exit('Access Denied');
 
 load()->func('cache.' . $_W['config']['setting']['cache']);
 
-
+/*
+* 读取缓存，并将缓存加载至 $_W 全局变量中。
+* $key	string	缓存键名
+* $unserialize	boolean	是否将缓存数据反序列化
+*/
 function cache_load($key, $unserialize = false) {
 	global $_W;
 	$data = $_W['cache'][$key] = cache_read($key);

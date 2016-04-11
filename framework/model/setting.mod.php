@@ -1,10 +1,15 @@
 <?php
 /**
  * Copyright © 2015-2016 Port-of-World
- * 
+ * 配置信息相关函数
  */
 defined('IN_IA') or exit('Access Denied');
 
+/*
+*设置缓存信息
+*$data	string	缓存数据
+*$key	string	缓存键
+*/
 
 function setting_save($data = '', $key = '') {
 	if (empty($data) && empty($key)) {
@@ -28,6 +33,10 @@ function setting_save($data = '', $key = '') {
 }
 
 
+/*
+*加载缓存的设置信息，加载后可通过$_W['setting'][$key]中读取
+*$key	string	缓存的值
+*/
 function setting_load($key = '') {
 	global $_W;
 	if (empty($key)) {

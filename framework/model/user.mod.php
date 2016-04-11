@@ -1,10 +1,14 @@
 <?php
 /**
  * Copyright © 2016 Port-of-World.
+ * 用户操作相关函数
  */
 defined('IN_IA') or exit('Access Denied');
 
-
+/*
+* 用户注册
+*$user	array	用户注册信息 如果注册成功，返回新增的用户ID，否则返回0
+*/
 function user_register($user) {
 	if (empty($user) || !is_array($user)) {
 		return 0;
@@ -28,7 +32,10 @@ function user_register($user) {
 	return intval($user['uid']);
 }
 
-
+/*
+* 检测用户是否存在
+* $user	array	用户信息 如果用户不存在，返回FALSE，如果用户存在，则返回TRUE
+*/
 function user_check($user) {
 	if (empty($user) || !is_array($user)) {
 		return false;
@@ -62,7 +69,11 @@ function user_check($user) {
 	return true;
 }
 
-
+/*
+*查询用户信息
+*$user_or_id	int	要查询的用户ID
+*如果要查询的用户ID为空，返回FALSE，否则返回用户的详细信息。
+*/
 function user_single($user_or_uid) {
 	$user = $user_or_uid;
 	if (empty($user)) {
@@ -109,7 +120,10 @@ function user_single($user_or_uid) {
 	return $record;
 }
 
-
+/*
+*更新用户资料
+*$uesr	array	用户的资料数据 如果更新数据成功返回TRUE否则返回FALSE。
+*/
 function user_update($user) {
 	if(empty($user['uid']) || !is_array($user)) {
 		return false;
@@ -147,13 +161,22 @@ function user_update($user) {
 	return pdo_update('users', $record, array('uid' => intval($user['uid'])));
 }
 
-
+/*
+*计算用户密码
+*$passwordinput	string	用户表单提交的密码
+*$salt	string	附加的字符串
+*返回的是一个字符串。
+*/
 function user_hash($passwordinput, $salt) {
 	global $_W;
 	$passwordinput = "{$passwordinput}-{$salt}-{$_W['config']['setting']['authkey']}";
 	return sha1($passwordinput);
 }
 
+/*
+*给用户设置权限
+*返回值 数组
+*/
 function user_level() {
 	static $level = array(
 		'-3' => '锁定用户',

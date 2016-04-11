@@ -1,11 +1,16 @@
 <?php
 /**
- * [WeEngine System] Copyright (c) 2014 WE7.CC
- * WeEngine is NOT a free software, it under the license terms, visited http://www.we7.cc/ for more details.
+ * Http请求函数
+ * 
  */
 defined('IN_IA') or exit('Access Denied');
 
-
+/*
+* $url	string	请求URL地址
+* $data	string	请求数据
+* $extra	array	header 参数
+* $timeout	int	超时时间
+*/
 function ihttp_request($url, $post = '', $extra = array(), $timeout = 60) {
 	$urlset = parse_url($url);
 	if (empty($urlset['path'])) {
@@ -228,18 +233,31 @@ function ihttp_response_parse_unchunk($str = null) {
 	return $str;
 }
 
-
+/*
+* 封装的 GET 请求方法
+* $url	string	请求URL地址
+* load()->func('communication'); $result = ihttp_get('https://www.baidu.com'); print_r($result);
+*/
 function ihttp_get($url) {
 	return ihttp_request($url);
 }
 
-
+/*
+* $url	string	请求URL地址
+* $data	array	请求数据
+*
+*/
 function ihttp_post($url, $data) {
 	$headers = array('Content-Type' => 'application/x-www-form-urlencoded');
 	return ihttp_request($url, $data, $headers);
 }
 
 
+/*
+* 发送Email
+* $to	string	收件人邮箱 $subject	string	邮件主题 $body	string	邮件内容 $global	boolean	是否使用系统邮箱配置信息，默认使用
+* load()->func('communication'); ihttp_email('weizan@163.com', '测试邮件', '这是一封测试邮件！');
+*/
 function ihttp_email($to, $subject, $body, $global = false) {
 	static $mailer;
 	set_time_limit(0);

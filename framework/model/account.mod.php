@@ -1,13 +1,19 @@
 <?php
 /**
  * Copyright © 2016 Port-of-World.
+ * 公众号相关函数
  */
 defined('IN_IA') or exit('Access Denied');
 
 define('WEIXIN_ROOT', 'https://mp.weixin.qq.com');
 define('YIXIN_ROOT', 'https://plus.yixin.im');
 
-
+/*
+* 添加公众号时执行数量判断
+* $uid	int	操作用户
+* $type	int	公众号类型
+* load()->model('account'); $result = uni_create_permission($_W['uid'], 2)
+*/
 function uni_create_permission($uid, $type = 1) {
 	$groupid = pdo_fetchcolumn('SELECT groupid FROM ' . tablename('users') . ' WHERE uid = :uid', array(':uid' => $uid));
 	$groupdata = pdo_fetch('SELECT maxaccount, maxsubaccount FROM ' . tablename('users_group') . ' WHERE id = :id', array(':id' => $groupid));
@@ -33,7 +39,13 @@ function uni_create_permission($uid, $type = 1) {
 	return true;
 }
 
-
+/*
+* 创建公众号
+* $uniAccount	array	公众号基本信息 $account	array	公众号信息
+* 如果添加失败，返回错误信息。如果添加的是子公众号，返回array(公众号信息，子公众号ID)，否则返回统一公众号ID。
+* 公众号套餐到期后,更新服务套餐为'基础服务套餐
+* load()->model('account'); uni_group_check();
+*/
 function uni_create($uniAccount, $account = array()) {
 	global $_W;
 	load()->model('module');
@@ -108,6 +120,12 @@ function uni_group_check() {
 	return false;
 }
 
+/*
+* 获取当前用户可操作的所有公众号
+* $uid	int	操作用户，默认为当前操作用户
+* 返回指定用户可以操作的公众号列表。
+* load()->model('account'); $accounts = uni_owned(); print_r($accounts);
+*/
 function uni_owned($uid = 0) {
 	global $_W;
 	
@@ -128,7 +146,12 @@ function uni_owned($uid = 0) {
 	return $uniaccounts;
 }
 
-
+/*
+* 获取指定操作用户在指定的公众号所具有的操作权限
+* $uid	int	操作用户，默认为当前操作用户
+* 操作用户的 role (manager|operator)
+* load()->model('account'); $accounts = uni_permission(); print_r($accounts); // founder
+*/
 function uni_permission($uid = 0, $uniacid = 0) {
 	global $_W;
 	
@@ -148,7 +171,10 @@ function uni_permission($uid = 0, $uniacid = 0) {
 	return $role;
 }
 
-
+/*
+* 获取当前公号的所有子公众号
+* $uniacid	int	公众号ID，默认为当前公众号
+*/
 function uni_accounts($uniacid = 0) {
 	global $_W;
 	$uniacid = empty($uniacid) ? $_W['uniacid'] : intval($uniacid);
@@ -162,7 +188,11 @@ function uni_accounts($uniacid = 0) {
 	return $accounts;
 }
 
-
+/*
+* 获取指定统一公号下默认子号的的信息
+* $uniacid	int	公众号ID，默认为当前公众号
+* load()->model('account'); $accounts = uni_fetch(); print_r($accounts);
+*/
 function uni_fetch($uniacid = 0) {
 	global $_W;
 	$uniacid = empty($uniacid) ? $_W['uniacid'] : intval($uniacid);
@@ -171,7 +201,11 @@ function uni_fetch($uniacid = 0) {
 	return $uniaccount;
 }
 
-
+/*
+* 获取当前公号下所有安装模块及模块信息
+* $enabledOnly	boolean	是否只显示可用模块
+* load()->model('account'); $modules = uni_modules(); print_r($modules);
+*/
 function uni_modules($enabledOnly = true) {
 	global $_W;
 	$account = uni_fetch();
@@ -235,7 +269,11 @@ function uni_modules($enabledOnly = true) {
 	return $modules;
 }
 
-
+/*
+* 获取一个或多个公众号套餐信息
+* $groupids	array	套餐ID
+* load()->model('account'); $list = uni_groups(array(1)); print_r($list);
+*/
 function uni_groups($groupids = array()) {
 	$condition = '';
 	if (!is_array($groupids)) {
@@ -268,7 +306,12 @@ function uni_groups($groupids = array()) {
 	return $list;
 }
 
-
+/*
+* 获取当前套餐可用微站模板
+* load()->model('account'); $templates = uni_templates(); print_r($templates);
+*
+*
+*/
 function uni_templates() {
 	global $_W;
 	$groupid = $_W['account']['groupid'];
@@ -286,7 +329,12 @@ function uni_templates() {
 	return $templates;
 }
 
-
+/*
+* 获取指定公号的设置项
+* $uniacid	int	公众号ID
+* $fields	mixed	查询字段
+* load()->model('account'); $notify = uni_setting($_W['uniacid'], array('notify')); print_r($notify);
+*/
 function uni_setting($uniacid = 0, $fields = '*') {
 	global $_W;
 	$uniacid = empty($uniacid) ? $_W['uniacid'] : $uniacid;
@@ -314,7 +362,11 @@ function uni_setting($uniacid = 0, $fields = '*') {
 	return $unisettings[$uniacid];
 }
 
-
+/*
+* 获取支持的公众号类型
+* 支持的公众号类型列表
+* load()->model('account'); $types = account_types(); print_r($types);
+*/
 function account_types() {
 	static $types;
 	if(empty($types)) {
@@ -335,7 +387,11 @@ function account_types() {
 	return $types;
 }
 
-
+/*
+* 创建子公众号
+* $uniacid	int	指定统一公号 $account	array	子公号信息 新创建的子公号 acid
+* load()->model('account'); $acid = account_types($_W['uniacid'], array('type' => 1)); print_r($types); // 1002
+*/
 function account_create($uniacid, $account) {
 	$accountdata = array('uniacid' => $uniacid, 'type' => $account['type'], 'hash' => random(8));
 	
@@ -358,7 +414,11 @@ function account_create($uniacid, $account) {
 	return $acid;
 }
 
-
+/*
+* 获取指定子公号信息
+* $acid	int	子公号acid
+* load()->model('account'); $account = account_fetch(111); print_r($account);
+*/
 function account_fetch($acid) {
 	global $_W;
 	$account = pdo_fetch("SELECT w.*, a.type, a.isconnect FROM ".tablename('account')." a INNER JOIN ".tablename('account_wechats')." w USING(acid) WHERE acid = :acid", array(':acid' => $acid));
@@ -370,7 +430,11 @@ function account_fetch($acid) {
 	return $account;
 }
 
-
+/*
+* 登录微信公众号
+* $username	string	微信公众号用户名 $password	string	微信公众号密码 $imgcode	string	登录验证码
+*
+*/
 function account_weixin_login($username = '', $password = '', $imgcode = '') {
 	global $_W, $_GPC;
 	if (empty($username) || empty($password)) {
@@ -453,7 +517,10 @@ function account_weixin_login($username = '', $password = '', $imgcode = '') {
 	return true;
 }
 
-
+/*
+* 获取微信公众号的基本信息 
+* $username	string	微信公众号用户名 $password	string	微信公众号密码 $imgcode	string	登录验证码
+*/
 function account_weixin_basic($username) {
 	global $wechat;
 	$response = account_weixin_http($username, WEIXIN_ROOT . '/cgi-bin/settingpage?t=setting/index&action=index&lang=zh_CN');

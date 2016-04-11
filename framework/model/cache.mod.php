@@ -1,15 +1,21 @@
 <?php
 
 /**
- * [WeEngine System] Copyright (c) 2014 WE7.CC
- * WeEngine is NOT a free software, it under the license terms, visited http://www.we7.cc/ for more details.
+ *系统缓存
+ */
+ 
+ /*
+ * 更新模板缓存
+ *
  */
 function cache_build_template() {
 	load()->func('file');
 	rmdirs(IA_ROOT . '/data/tpl', true);
 }
 
-
+/*
+*更新设置项缓存
+*/
 function cache_build_setting() {
 	$sql = 'SELECT * FROM ' . tablename('core_settings');
 	$setting = pdo_fetchall($sql, array(), 'key');
@@ -21,7 +27,9 @@ function cache_build_setting() {
 	}
 }
 
-
+/*
+*更新模块缓存
+*/
 function cache_build_modules() {
 	$modules = pdo_fetchall("SELECT * FROM " . tablename('modules') . ' ORDER BY `mid` ASC', array(), 'name');
 	$pMenus = array();
@@ -110,7 +118,10 @@ function cache_build_hook() {
 	}
 }
 
-
+/*
+* 更新会员个人信息字段
+*
+*/
 function cache_build_users_struct() {
 	$struct = array();
 	$result = pdo_fetchall("SHOW COLUMNS FROM ".tablename('mc_members'));

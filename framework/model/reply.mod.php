@@ -1,11 +1,18 @@
 <?php 
 /**
- * [WeEngine System] Copyright (c) 2014 WE7.CC
- * WeEngine is NOT a free software, it under the license terms, visited http://www.we7.cc/ for more details.
+ * 
+ * 规则回复函数
  */
 defined('IN_IA') or exit('Access Denied');
 
-
+/**规则查询
+*$condition	string	查询条件where后的内容
+*$params	array	查询参数
+*$pindex	int	当前页码
+*$psize	int	分页大小
+*$total	int	总记录数
+*如果查询条件非空，当前页码不为0，则依照此条件进行查询。
+*/
 function reply_search($condition = '', $params = array(), $pindex = 0, $psize = 10, &$total = 0) {
 	if (!empty($condition)) {
 		$where = "WHERE {$condition}";
@@ -19,7 +26,11 @@ function reply_search($condition = '', $params = array(), $pindex = 0, $psize = 
 	return pdo_fetchall($sql, $params);
 }
 
-
+/*
+*查询单条规则及其下的所有关键字。
+*$id	int	规则的id字段值
+*如果查询出的规则为空，显示NULL。否则显示其关键字
+*/
 function reply_single($id) {
 	$result = array();
 	$id = intval($id);
@@ -31,7 +42,15 @@ function reply_single($id) {
 	return $result;
 }
 
-
+/*
+*查询满足条件的所有规则关键字
+*$condition	string	查询条件where后的内容
+*$params	array	查询参数
+*$pindex	int	当前页码
+*$psize	int	分页大小
+*$total	int	总计录
+*当查询条件不为空，当前页码值不为0时，返回按照相关条件查询出的结果。
+*/
 function reply_keywords_search($condition = '', $params = array(), $pindex = 0, $psize = 10, &$total = 0) {
 	if (!empty($condition)) {
 		$where = " WHERE {$condition} ";
