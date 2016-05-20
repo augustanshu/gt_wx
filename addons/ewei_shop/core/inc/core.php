@@ -90,8 +90,8 @@ class Core extends WeModuleSite
 				if (!$isagent) {
 					$this->footer['commission'] = array('text' => $set['texts']['become'], 'ico' => 'user-plus', 'url' => $this->createPluginMobileUrl('commission/register'));
 				} else {
-					$this->footer['commission'] = array('text' => $set['texts']['become'], 'ico' => 'user-plus', 'url' => $this->createPluginMobileUrl('commission/register'));
-					//$this->footer['commission'] = array('text' => $set['texts']['shop'], 'ico' => 'heart', 'url' => $this->createPluginMobileUrl('commission/myshop', array('mid' => $member['mid'])));
+					//$this->footer['commission'] = array('text' => $set['texts']['become'], 'ico' => 'user-plus', 'url' => $this->createPluginMobileUrl('commission/register'));
+					$this->footer['commission'] = array('text' => $set['texts']['shop'], 'ico' => 'heart', 'url' => $this->createPluginMobileUrl('commission/myshop', array('mid' => $member['mid'])));
 				}
 			}
 		}
