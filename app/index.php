@@ -84,10 +84,12 @@ if(!empty($handle)) {
 		}
 	}
 }
+
 if(!in_array($controller, $controllers)) {
 	$controller = 'home';
 }
 $init = IA_ROOT . "/app/source/{$controller}/__init.php";
+
 if(is_file($init)) {
 	require $init;;
 }
@@ -114,6 +116,7 @@ if(!in_array($action, $actions)) {
 }
 
 init_quickmenus($multiid);
+
 require _forward($controller, $action);
 
 function _forward($c, $a) {

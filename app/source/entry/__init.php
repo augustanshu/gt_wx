@@ -1,11 +1,11 @@
 <?php
 /**
- * [WeEngine System] Copyright (c) 2014 WE7.CC
- * WeEngine is NOT a free software, it under the license terms, visited http://www.we7.cc/ for more details.
+ * 
  */
 
 $eid = intval($_GPC['eid']);
 if(!empty($eid)) {
+	
 	$sql = 'SELECT * FROM ' . tablename('modules_bindings') . ' WHERE `eid`=:eid';
 	$entry = pdo_fetch($sql, array(':eid' => $eid));
 } else {
@@ -27,8 +27,10 @@ define('IN_MODULE', $entry['module']);
 init_quickmenus($multiid);
 
 $site = WeUtility::createModuleSite($entry['module']);
+
 if(!is_error($site)) {
 	$method = 'doMobile' . ucfirst($entry['do']);
 	exit($site->$method());
 }
 exit();
+
